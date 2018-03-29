@@ -121,6 +121,9 @@ _TeamCity*
 *.coverage
 *.coveragexml
 
+# Coverlet coverage results
+lcov.info
+
 # NCrunch
 _NCrunch_*
 .*crunch*.local.xml
