@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SessionPlanner.Domain;
 using SessionPlanner.Repositories;
 
 namespace SessionPlanner
@@ -35,6 +36,12 @@ namespace SessionPlanner
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<ISessionRepository, SessionRepository>();
+            services.AddScoped<IEventService, IEventService>();
+            
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +52,7 @@ namespace SessionPlanner
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseMvc();
         }
     }
 }

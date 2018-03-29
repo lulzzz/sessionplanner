@@ -3,16 +3,18 @@ using SessionPlanner.Domain;
 
 namespace SessionPlanner.Repositories
 {
-    public class SessionPlannerDbContext: DbContext
+    public class SessionPlannerDbContext : DbContext
     {
-        public SessionPlannerDbContext(DbContextOptions<SessionPlannerDbContext> options):base(options)
+        public SessionPlannerDbContext(DbContextOptions<SessionPlannerDbContext> options) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-        }    
+        }
 
-        public DbSet<Session> Sessions {get;set;}
-        public DbSet<Speaker> Speakers {get;set;}
-        public DbSet<Submission> Submissions {get;set;}
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Submission> Submissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

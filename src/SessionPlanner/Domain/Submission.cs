@@ -4,8 +4,6 @@ namespace SessionPlanner.Domain
 {
     public class Submission : Entity
     {
-        private SubmissionStatus submitted;
-
         private Submission()
         {
             

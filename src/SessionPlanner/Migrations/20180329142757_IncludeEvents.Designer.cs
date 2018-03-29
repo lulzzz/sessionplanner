@@ -13,9 +13,10 @@ using SessionPlanner.Repositories;
 namespace SessionPlanner.Migrations
 {
     [DbContext(typeof(SessionPlannerDbContext))]
-    partial class SessionPlannerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180329142757_IncludeEvents")]
+    partial class IncludeEvents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

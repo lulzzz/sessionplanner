@@ -22,7 +22,7 @@ namespace SessionPlanner.Repositories
         /// </summary>
         /// <param name="id">Primary key of the entity</param>
         /// <returns>Returns the found entity</returns>
-        public async Task<T> FindByIdAsync(int id)
+        public virtual async Task<T> FindByIdAsync(int id)
         {
             return await _dataContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -65,5 +65,10 @@ namespace SessionPlanner.Repositories
             _dataContext.Remove(instance);
             await _dataContext.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Gets the data context for the repository
+        /// </summary>
+        protected SessionPlannerDbContext DataContext => _dataContext;
     }
 }
